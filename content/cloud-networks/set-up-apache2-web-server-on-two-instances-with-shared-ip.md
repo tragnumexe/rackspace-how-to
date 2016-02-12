@@ -207,10 +207,9 @@ publicIPZoneId as master server.
 Perform the following steps from your local computer.
 
 1. Get port IDs for both servers. Filter the list ports operation by the PublicNet (network 
-ID that is all zeroes). 
-  Find the sections of the response where the value of device_id matches the master server, 
-  and save the corresponding ID (which is the port ID) for future reference. Do the same 
-  thing for the slave server.
+ID that is all zeroes). Find the sections of the response where the value of device_id 
+matches the master server, and save the corresponding ID (which is the port ID) for future 
+reference. Do the same thing for the slave server.
 
   *Request:*
 
@@ -432,18 +431,18 @@ following text. The lines with comments are the ones that have to be modified.
 
   *File contents:*
 
-    logfacility daemon
-    keepalive 2
-    deadtime 15
-    warntime 5
-    initdead 120
-    udpport 694
-    ucast eth0 10.23.233.89 # The IP address of the slave instance on public net
-    auto_failback on
-    node master-instance-name # master-instance-name is the name displayed by uname -n in the master instance
-    node slave-instance-name # slave-instance-name is the name displayed by uname -n in the slave instance
-    respawn hacluster /usr/lib/heartbeat/ipfail
-    use_logd yes
+      logfacility daemon
+      keepalive 2
+      deadtime 15 
+      warntime 5
+      initdead 120
+      udpport 694
+      ucast eth0 10.23.233.89 # The IP address of the slave instance on public net
+      auto_failback on
+      node master-instance-name # master-instance-name is the name displayed by uname -n in the master instance
+      node slave-instance-name # slave-instance-name is the name displayed by uname -n in the slave instance
+      respawn hacluster /usr/lib/heartbeat/ipfail
+      use_logd yes
 
 6. (Slave) Install Apache on the slave server by running the following commands:
 
@@ -455,10 +454,10 @@ following text. The lines with comments are the ones that have to be modified.
 following text. The contents are the same for the master server and the slave server. 
 Substitute your own passphrase.
 
-*File contents:*
+  *File contents:*
 
-    auth 1
-    1 sha1 YourSecretPassPhrase
+      auth 1
+      1 sha1 YourSecretPassPhrase
 
 8. (Slave) Set the correct permissions on the ***/etc/heartbeat/authkeys*** file
 
@@ -468,26 +467,26 @@ Substitute your own passphrase.
 it with the shared IP address (with you master server public IP address). The contents are 
 the same for the master server and the slave server.
 
-*File contents:*
+  *File contents:*
 
-    master-instance-name 10.23.233.113/24
+      master-instance-name 10.23.233.113/24
 
 10. (Slave) Create the ***/etc/heartbeat/ha.cf*** file on the slave server and enter the 
 following text. The lines with comments are the ones that have to be modified.
 
-*File contents:*
+  *File contents:*
 
-    logfacility daemon
-    keepalive 2
-    deadtime 15
-    warntime 5
-    initdead 120
-    udpport 694
-    ucast eth0 10.23.233.89 # The ip address of the master instance on public net
-    auto_failback on
-    node master-instance-name# master-instance-name is the name displayed by uname -n in the master instance
-    node slave-instance-name # slave-instance-name is the name displayed by uname -n in the slave instance
-    respawn hacluster /usr/lib/heartbeat/ipfail use_logd yes
+      logfacility daemon
+      keepalive 2
+      deadtime 15
+      warntime 5
+      initdead 120
+      udpport 694
+      ucast eth0 10.23.233.89 # The ip address of the master instance on public net
+      auto_failback on
+      node master-instance-name# master-instance-name is the name displayed by uname -n in the master instance
+      node slave-instance-name # slave-instance-name is the name displayed by uname -n in the slave instance
+      respawn hacluster /usr/lib/heartbeat/ipfail use_logd yes
 
 11. (Slave) Restart the heartbeat on the slave server by running the following command:
 
@@ -521,39 +520,39 @@ server by running the following command:
 
     ifconfig
 
-*Response:*
+  *Response:*
 
-    eth0 Link encap:Ethernet HWaddr aa:bb:cc:00:00:e4
-    inet addr:10.23.233.89 Bcast:10.23.233.255 Mask:255.255.255.0
-    inet6 addr: fe80::a8bb:ccff:fe00:e4/64 Scope:Link
-    UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1
-    RX packets:23989 errors:0 dropped:0 overruns:0 frame:0
-    TX packets:6016 errors:0 dropped:0 overruns:0 carrier:0
-    collisions:0 txqueuelen:1000
-    RX bytes:27487494 (27.4 MB) TX bytes:805941 (805.9 KB)
+      eth0 Link encap:Ethernet HWaddr aa:bb:cc:00:00:e4
+      inet addr:10.23.233.89 Bcast:10.23.233.255 Mask:255.255.255.0
+      inet6 addr: fe80::a8bb:ccff:fe00:e4/64 Scope:Link
+      UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1
+      RX packets:23989 errors:0 dropped:0 overruns:0 frame:0
+      TX packets:6016 errors:0 dropped:0 overruns:0 carrier:0
+      collisions:0 txqueuelen:1000
+      RX bytes:27487494 (27.4 MB) TX bytes:805941 (805.9 KB)
 
-    eth0:0 Link encap:Ethernet HWaddr aa:bb:cc:00:00:e4
-    inet addr:10.23.233.31 Bcast:10.23.233.255 Mask:255.55.255.0
-    UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1
+      eth0:0 Link encap:Ethernet HWaddr aa:bb:cc:00:00:e4
+      inet addr:10.23.233.31 Bcast:10.23.233.255 Mask:255.55.255.0
+      UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1
 
-    eth1 Link encap:Ethernet HWaddr aa:bb:cc:00:00:e5
-    inet addr:10.183.232.82 Bcast:10.183.239.255 Mask:255.255.248.0
-    inet6 addr: fe80::a8bb:ccff:fe00:e5/64 Scope:Link
-    UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1
-    RX packets:739 errors:0 dropped:0 overruns:0 frame:0
-    TX packets:615 errors:0 dropped:0 overruns:0 carrier:0
-    collisions:0 txqueuelen:1000
-    RX bytes:52142 (52.1 KB) TX bytes:85084 (85.0 KB)
+      eth1 Link encap:Ethernet HWaddr aa:bb:cc:00:00:e5
+      inet addr:10.183.232.82 Bcast:10.183.239.255 Mask:255.255.248.0
+      inet6 addr: fe80::a8bb:ccff:fe00:e5/64 Scope:Link
+      UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1
+      RX packets:739 errors:0 dropped:0 overruns:0 frame:0
+      TX packets:615 errors:0 dropped:0 overruns:0 carrier:0
+      collisions:0 txqueuelen:1000
+      RX bytes:52142 (52.1 KB) TX bytes:85084 (85.0 KB)
 
-    lo Link encap:Local Loopback
-    inet addr:127.0.0.1 Mask:255.0.0.0
+      lo Link encap:Local Loopback
+      inet addr:127.0.0.1 Mask:255.0.0.0
 
-    inet6 addr: ::1/128 Scope:Host
-    UP LOOPBACK RUNNING MTU:65536 Metric:1
-    RX packets:46268 errors:0 dropped:0 overruns:0 frame:0
-    TX packets:46268 errors:0 dropped:0 overruns:0 carrier:0
-    collisions:0 txqueuelen:0
-    RX bytes:15678190 (15.6 MB) TX bytes:15678190 (15.6 MB)
+      inet6 addr: ::1/128 Scope:Host
+      UP LOOPBACK RUNNING MTU:65536 Metric:1
+      RX packets:46268 errors:0 dropped:0 overruns:0 frame:0
+      TX packets:46268 errors:0 dropped:0 overruns:0 carrier:0
+      collisions:0 txqueuelen:0
+      RX bytes:15678190 (15.6 MB) TX bytes:15678190 (15.6 MB)
 
 2. (Local computer) Browse to the shared IP address, which connects you to the master server, 
 by using a web browser with the shared IP address in the address bar. The browser displays 
@@ -578,7 +577,6 @@ address for future reference.
 
     ssh username@slave_server_ip_address
 
-
 7. (Local computer) After a few moments, browse to the shared IP address, which connects 
 you to the slave server, by using a web browser with the shared IP address in the address 
 bar. The browser displays the slave server's instance name.
@@ -588,39 +586,39 @@ by running the following command:
 
     sudo ifconfig
 
-*Response:*
+  *Response:*
 
-    eth0 Link encap:Ethernet HWaddr aa:bb:cc:00:01:08
-    inet addr:10.23.233.113 Bcast:10.23.233.255 Mask:255.255.255.0
-    inet6 addr: fe80::a8bb:ccff:fe00:108/64 Scope:Link
-    inet6 addr: 2001:4801:787f:205:a8bb:ccff:fe00:108/64 Scope:Global
-    UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1
-    RX packets:24551 errors:0 dropped:0 overruns:0 frame:0
-    TX packets:6662 errors:0 dropped:0 overruns:0 carrier:0
-    collisions:0 txqueuelen:1000
-    RX bytes:27526381 (27.5 MB) TX bytes:848469 (848.4 KB)
+      eth0 Link encap:Ethernet HWaddr aa:bb:cc:00:01:08
+      inet addr:10.23.233.113 Bcast:10.23.233.255 Mask:255.255.255.0
+      inet6 addr: fe80::a8bb:ccff:fe00:108/64 Scope:Link
+      inet6 addr: 2001:4801:787f:205:a8bb:ccff:fe00:108/64 Scope:Global
+      UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1
+      RX packets:24551 errors:0 dropped:0 overruns:0 frame:0
+      TX packets:6662 errors:0 dropped:0 overruns:0 carrier:0
+      collisions:0 txqueuelen:1000
+      RX bytes:27526381 (27.5 MB) TX bytes:848469 (848.4 KB)
 
-    eth0:0 Link encap:Ethernet HWaddr aa:bb:cc:00:01:08
-    inet addr:10.23.233.31 Bcast:10.23.233.255 Mask:255.255.255.0
-    UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1
+      eth0:0 Link encap:Ethernet HWaddr aa:bb:cc:00:01:08
+      inet addr:10.23.233.31 Bcast:10.23.233.255 Mask:255.255.255.0
+      UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1
 
-    eth1 Link encap:Ethernet HWaddr aa:bb:cc:00:01:09
-    inet addr:10.183.232.104 Bcast:10.183.239.255 Mask:255.255.248.0
-    inet6 addr: fe80::a8bb:ccff:fe00:109/64 Scope:Link
-    UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1
-    RX packets:0 errors:0 dropped:0 overruns:0 frame:0
-    TX packets:16 errors:0 dropped:0 overruns:0 carrier:0
-    collisions:0 txqueuelen:1000
-    RX bytes:0 (0.0 B) TX bytes:1296 (1.2 KB)
+      eth1 Link encap:Ethernet HWaddr aa:bb:cc:00:01:09
+      inet addr:10.183.232.104 Bcast:10.183.239.255 Mask:255.255.248.0
+      inet6 addr: fe80::a8bb:ccff:fe00:109/64 Scope:Link
+      UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1
+      RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+      TX packets:16 errors:0 dropped:0 overruns:0 carrier:0
+      collisions:0 txqueuelen:1000
+      RX bytes:0 (0.0 B) TX bytes:1296 (1.2 KB)
 
-    lo Link encap:Local Loopback
-    inet addr:127.0.0.1 Mask:255.0.0.0
-    inet6 addr: ::1/128 Scope:Host
-    UP LOOPBACK RUNNING MTU:65536 Metric:1
-    RX packets:778 errors:0 dropped:0 overruns:0 frame:0
-    TX packets:778 errors:0 dropped:0 overruns:0 carrier:0
-    collisions:0 txqueuelen:0
-    RX bytes:256853 (256.8 KB) TX bytes:256853 (256.8 KB)
+      lo Link encap:Local Loopback
+      inet addr:127.0.0.1 Mask:255.0.0.0
+      inet6 addr: ::1/128 Scope:Host
+      UP LOOPBACK RUNNING MTU:65536 Metric:1
+      RX packets:778 errors:0 dropped:0 overruns:0 frame:0
+      TX packets:778 errors:0 dropped:0 overruns:0 carrier:0
+      collisions:0 txqueuelen:0
+      RX bytes:256853 (256.8 KB) TX bytes:256853 (256.8 KB)
 
 9. (Master) Turn on the eth0 interface by running the following command:
 
