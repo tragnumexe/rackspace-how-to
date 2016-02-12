@@ -45,14 +45,16 @@ Perform the following steps from your local computer.
 
 *Request:*
 
-```curl -s https://dfw.servers.api.rackspacecloud.com/v2/5831008/servers 
+```
+curl -s https://dfw.servers.api.rackspacecloud.com/v2/5831008/servers 
       -X POST -H "Content-Type: application/json" 
       -H "X-Auth-Token: $token" 
       -d " {"server": {"name": "isol1", "imageRef": "adb78bf4-81ae-4dce-a417-8eb2b7f7f0c3", "flavorRef": "2", "max_count": 1, "min_count": 1, "networks": [{"uuid": "00000000-0000-0000-0000-000000000000"}, {"uuid": "11111111-1111-1111-1111-111111111111"}, {"uuid": "7af32f1c-85de-44c5-be68-4b1465566683"}]}}"
 ```
 *Response:*
 
-```{"server": {
+```
+{"server": {
       "OS-DCF:diskConfig": "AUTO",
       "id": "96bbd712-0f64-4146-bfb2-b2bd91f20319",
       "links": [
@@ -67,13 +69,15 @@ Perform the following steps from your local computer.
 
 *Request:*
 
-```curl -s https://dfw.servers.api.rackspacecloud.com/v2/5831008/servers/96bbd712-0f64-4146-bfb2-b2bd91f20319 
+```
+curl -s https://dfw.servers.api.rackspacecloud.com/v2/5831008/servers/96bbd712-0f64-4146-bfb2-b2bd91f20319 
      -X GET -H "Content-Type: application/json" 
      -H "X-Auth-Token: $token"
 ```
 *Response:*
 
-```{"server": {
+```
+{"server": {
       "OS-DCF:diskConfig": "AUTO",
       "OS-EXT-STS:power_state": 1,
       "OS-EXT-STS:task_state": null,
@@ -126,14 +130,16 @@ Perform the following steps from your local computer.
 
 *Request:*
 
-```curl -vv -s -k https://dfw.servers.api.rackspacecloud.com/v2/5831008/servers 
+```
+curl -vv -s -k https://dfw.servers.api.rackspacecloud.com/v2/5831008/servers 
      -X POST -H "Content-Type: application/json" 
      -H "X-Auth-Token: $token" 
      -d "{"server":{"name": "isol2","imageRef": "adb78bf4-81ae-4dce-a417-8eb2b7f7f0c3","os:scheduler_hints": {"public_ip_zone:near": ["96bbd712-0f64-4146-bfb2-b2bd91f20319"]},"flavorRef": "2","max_count": 1,"min_count": 1,"networks": [{"uuid": "00000000-0000-0000-0000-000000000000"}, {"uuid": "11111111-1111-1111-1111-111111111111"}, {"uuid": "7af32f1c-85de-44c5-be68-4b1465566683"}]}}&rdquo;
 ```
 *Response:*
 
-```{"server": {
+```
+{"server": {
       "OS-DCF:diskConfig": "AUTO",
       "id": "ffec9d55-2d54-4718-bc3a-0d47fb8c52c1",
       "links": [
@@ -148,13 +154,15 @@ Perform the following steps from your local computer.
 
 *Request:*
 
-```curl -s https://dfw.servers.api.rackspacecloud.com/v2/5831008/servers/ffec9d55-2d54-4718-bc3a-0d47fb8c52c1 
+```
+curl -s https://dfw.servers.api.rackspacecloud.com/v2/5831008/servers/ffec9d55-2d54-4718-bc3a-0d47fb8c52c1 
      -X GET -H "Content-Type: application/json" 
      -H "X-Auth-Token: $token"
 ```
 *Response:*
 
-```{"server": {
+```
+{"server": {
       "OS-DCF:diskConfig": "AUTO",
       "OS-EXT-STS:power_state": 1,
       "OS-EXT-STS:task_state": null,
@@ -212,13 +220,15 @@ Perform the following steps from your local computer.
 
 *Request:*
 
-```curl -s https://dfw.networks.api.rackspacecloud.com/v2.0/ports?network_id=00000000-0000-0000-0000-000000000000 
+```
+curl -s https://dfw.networks.api.rackspacecloud.com/v2.0/ports?network_id=00000000-0000-0000-0000-000000000000 
      -X GET 
      -H "X-Auth-Token: $token" | python -m json.tool
 ```
 *Response:*
 
-```{"ports": [
+```
+{"ports": [
       {
          "admin_state_up": true,
          "device_id": "96bbd712-0f64-4146-bfb2-b2bd91f20319",
@@ -277,14 +287,16 @@ Perform the following steps from your local computer.
 
 *Request:*
 
-```curl -s https://dfw.networks.api.rackspacecloud.com/v2.0/ip_addresses 
+```
+curl -s https://dfw.networks.api.rackspacecloud.com/v2.0/ip_addresses 
      -X POST -H "Content-Type: application/json" 
      -H "X-Auth-Token: $token" 
      -d " {"ip_address":{"network_id": "00000000-0000-0000-0000-000000000000","port_ids": ["a1bb7074-9ccc-4bc0-991e-7847de374af3", "0b5a23ec-be78-4ea3-9251-b64444236c1d"],"tenant_id": "5831008","version": 4}}"
 ```
 *Response:*
 
-```{"ip_address": {
+```
+{"ip_address": {
       "subnet_id": "535ca638-a358-4d02-8271-1e6f795f8a0c",
       "version": 4,
       "address": "10.23.233.31",
@@ -303,13 +315,15 @@ Perform the following steps from your local computer.
 
 *Request:*
 
-```curl -s https://dfw.networks.api.rackspacecloud.com/v2.0/ip_addresses 
+```
+curl -s https://dfw.networks.api.rackspacecloud.com/v2.0/ip_addresses 
      -X GET -H "Content-Type: application/json" 
      -H "X-Auth-Token: $token"
 ```
 *Response:*
 
-```"ip_addresses": {[{
+```
+"ip_addresses": {[{
          "address": "2001:4801:787f:205:a8bb:ccff:fe00:108",
          "id": "068652fe-33e2-44b6-9ad3-c0362e5d7e18",
          "network_id": "00000000-0000-0000-0000-000000000000",
@@ -365,13 +379,15 @@ Perform the following steps from your local computer.
 
 *Request:*
 
-```curl -vv -s -k https://dfw.servers.api.rackspacecloud.com/v2/5831008/servers/96bbd712-0f64-4146-bfb2-b2bd91f20319/ip_associations/e201f500-6d57-4901-b7a0-3842a3a32207
+```
+curl -vv -s -k https://dfw.servers.api.rackspacecloud.com/v2/5831008/servers/96bbd712-0f64-4146-bfb2-b2bd91f20319/ip_associations/e201f500-6d57-4901-b7a0-3842a3a32207
       -X PUT -H "Content-Type: application/json" 
       -H "X-Auth-Token: $token"
 ```
 *Response:*
 
-```{"ip_association": {
+```
+{"ip_association": {
       "id": "e201f500-6d57-4901-b7a0-3842a3a32207",
       "address": "10.23.233.31"
    }
@@ -381,13 +397,15 @@ Perform the following steps from your local computer.
 
 *Request:*
 
-```curl -vv -s -k https://dfw.servers.api.rackspacecloud.com/v2/5831008/servers/ffec9d55-2d54-4718-bc3a-0d47fb8c52c1/ip_associations/e201f500-6d57-4901-b7a0-3842a3a32207 
+```
+curl -vv -s -k https://dfw.servers.api.rackspacecloud.com/v2/5831008/servers/ffec9d55-2d54-4718-bc3a-0d47fb8c52c1/ip_associations/e201f500-6d57-4901-b7a0-3842a3a32207 
       -X PUT -H "Content-Type: application/json" <br>
       -H "X-Auth-Token: $token"
 ```
 *Response:*
 
-```{"ip_association": {
+```
+{"ip_association": {
       "id": "e201f500-6d57-4901-b7a0-3842a3a32207",
       "address": "10.23.233.31"
    }
@@ -400,7 +418,8 @@ indicates where to perform the step.
 
 1. (Master) Install Apache on the master server by running the following commands:
 
-```sudo apt-get update
+```
+sudo apt-get update
 sudo apt-get install heartbeat
 sudo apt-get install apache2
 ```
@@ -409,26 +428,30 @@ sudo apt-get install apache2
 
 *File contents:*
 
-```auth 1
+```
+auth 1
 1 sha1 YourSecretPassPhrase
 ```
 3. (Master) Set the correct permissions on the ***/etc/heartbeat/authkeys*** file
 
-```chmod 600 /etc/heartbeat/authkeys
+```
+chmod 600 /etc/heartbeat/authkeys
 ```
 4. (Master) Create the ***/etc/heartbeat/haresources*** file on the master server and enter the following contents 
         (with your master server public IP address). The contents are the same for the master server and the slave server.
 
 *File contents:*
 
-```master-instance-name 10.23.233.113/24
+```
+master-instance-name 10.23.233.113/24
 ```
 5. (Master) Create the ***/etc/heartbeat/ha.cf*** file on master server and enter the following text. The lines with 
         comments are the ones that have to be modified.
 
 *File contents:*
 
-```logfacility daemon
+```
+logfacility daemon
 keepalive 2
 deadtime 15
 warntime 5
@@ -443,7 +466,8 @@ use_logd yes
 ```
 6. (Slave) Install Apache on the slave server by running the following commands:
 
-```sudo apt-get update
+```
+sudo apt-get update
 sudo apt-get install heartbeat
 sudo apt-get install apache2
 ```
@@ -452,12 +476,14 @@ sudo apt-get install apache2
 
 *File contents:*
 
-```auth 1
+```
+auth 1
 1 sha1 YourSecretPassPhrase
 ```
 8. (Slave) Set the correct permissions on the ***/etc/heartbeat/authkeys*** file
 
-```chmod 600 /etc/heartbeat/authkeys
+```
+chmod 600 /etc/heartbeat/authkeys
 ```
 9. (Slave) Create the ***/etc/heartbeat/haresources*** file on the slave server and populate it with the 
         shared IP address (with you master server public IP address). The contents are the same for the master 
@@ -465,14 +491,16 @@ sudo apt-get install apache2
 
 *File contents:*
 
-```master-instance-name 10.23.233.113/24
+```
+master-instance-name 10.23.233.113/24
 ```
 10. (Slave) Create the ***/etc/heartbeat/ha.cf*** file on the slave server and enter the following text. 
          The lines with comments are the ones that have to be modified.
 
 *File contents:*
 
-```logfacility daemon
+```
+logfacility daemon
 keepalive 2
 deadtime 15
 warntime 5
@@ -486,11 +514,13 @@ respawn hacluster /usr/lib/heartbeat/ipfail use_logd yes
 ```
 11. (Slave) Restart the heartbeat on the slave server by running the following command:
 
-```sudo service heartbeat restart
+```
+sudo service heartbeat restart
 ```
 12. (Master) Set up Apache to respond with the hostname on the master server by running the following command:
 
-```echo `hostname` > /var/www/html/index.html
+```
+echo `hostname` > /var/www/html/index.html
 ```
 13. (Slave) Set up Apache to respond with the hostname on the slave server by running the following command:
 
@@ -498,11 +528,13 @@ respawn hacluster /usr/lib/heartbeat/ipfail use_logd yes
 ```
 14. (Master) Restart Apache on the master server by running the following command:
 
-```sudo service apache2 restart
+```
+sudo service apache2 restart
 ```
 15. (Slave) Restart Apache on the slave server by running the following command:
 
-```sudo service apache2 restart
+```
+sudo service apache2 restart
 ```
 ### Test the configuration
 
@@ -512,11 +544,13 @@ local computer. Each step indicates where to perform the step.
 1. (Master) Validate the eth0 interface configured with the shared IP address on the master server by running 
         the following command:
 
-```ifconfig
+```
+ifconfig
 ```
 *Response:*
 
-```eth0 Link encap:Ethernet HWaddr aa:bb:cc:00:00:e4
+```
+eth0 Link encap:Ethernet HWaddr aa:bb:cc:00:00:e4
 inet addr:10.23.233.89 Bcast:10.23.233.255 Mask:255.255.255.0
 inet6 addr: fe80::a8bb:ccff:fe00:e4/64 Scope:Link
 UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1
@@ -554,31 +588,37 @@ RX bytes:15678190 (15.6 MB) TX bytes:15678190 (15.6 MB)
 3. (Local computer) Use SSH to connect to the master server by running the following command (substituting your 
         username and your master server IP address):
 
-```ssh username@master_server_ip_address
+```
+ssh username@master_server_ip_address
 ```
 4. (Master) Find the gateway address by running the following command. Save the gateway address for future reference.
 
-```route | grep default
+```
+route | grep default
 ```
 5. (Master) Turn off the eth0 interface by running the following command:
 
-```sudo ifconfig eth0 down
+```
+sudo ifconfig eth0 down
 ```
 6. (Local computer) Use SSH to connect to the slave server by running the following command (substituting your 
         username and your master server IP address):
 
-```ssh username@slave_server_ip_address
+```
+ssh username@slave_server_ip_address
 ```
 7. (Local computer) After a few moments, browse to the shared IP address, which connects you to the slave server, 
         by using a web browser with the shared IP address in the address bar. The browser displays the slave server's instance name.
 
 8. (Slave) Validate the eth0 interface configured with shared IP address on the slave server by running the following command:
 
-```sudo ifconfig
+```
+sudo ifconfig
 ```
 *Response:*
 
-```eth0 Link encap:Ethernet HWaddr aa:bb:cc:00:01:08
+```
+eth0 Link encap:Ethernet HWaddr aa:bb:cc:00:01:08
 inet addr:10.23.233.113 Bcast:10.23.233.255 Mask:255.255.255.0
 inet6 addr: fe80::a8bb:ccff:fe00:108/64 Scope:Link
 inet6 addr: 2001:4801:787f:205:a8bb:ccff:fe00:108/64 Scope:Global
@@ -612,10 +652,12 @@ RX bytes:256853 (256.8 KB) TX bytes:256853 (256.8 KB)
 ```
 9. (Master) Turn on the eth0 interface by running the following command:
 
-```sudo ifconfig eth0 up
+```
+sudo ifconfig eth0 up
 ```
 10. (Master) Restore the shared IP address to the master instance by running the following command (using 
          the gateway address from step 4):
 
-```route add default gw <gateway-address>
+```
+route add default gw <gateway-address>
 ```
