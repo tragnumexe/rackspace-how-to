@@ -51,6 +51,7 @@ curl -s https://dfw.servers.api.rackspacecloud.com/v2/5831008/servers
       -H "X-Auth-Token: $token" 
       -d " {"server": {"name": "isol1", "imageRef": "adb78bf4-81ae-4dce-a417-8eb2b7f7f0c3", "flavorRef": "2", "max_count": 1, "min_count": 1, "networks": [{"uuid": "00000000-0000-0000-0000-000000000000"}, {"uuid": "11111111-1111-1111-1111-111111111111"}, {"uuid": "7af32f1c-85de-44c5-be68-4b1465566683"}]}}"
 ```
+
 *Response:*
 
 ```
@@ -65,6 +66,7 @@ curl -s https://dfw.servers.api.rackspacecloud.com/v2/5831008/servers
    }
 }
 ```
+
 2. Get the details for the master server. Save the publicIPZoneId for future reference.
 
 *Request:*
@@ -74,6 +76,7 @@ curl -s https://dfw.servers.api.rackspacecloud.com/v2/5831008/servers/96bbd712-0
      -X GET -H "Content-Type: application/json" 
      -H "X-Auth-Token: $token"
 ```
+
 *Response:*
 
 ```
@@ -125,6 +128,7 @@ curl -s https://dfw.servers.api.rackspacecloud.com/v2/5831008/servers/96bbd712-0
    }
 }
 ```
+
 3. Boot the slave server in same publicIPZoneId as the master server by using a scheduler hint. Save the server ID 
         for future reference.
 
@@ -136,6 +140,7 @@ curl -vv -s -k https://dfw.servers.api.rackspacecloud.com/v2/5831008/servers
      -H "X-Auth-Token: $token" 
      -d "{"server":{"name": "isol2","imageRef": "adb78bf4-81ae-4dce-a417-8eb2b7f7f0c3","os:scheduler_hints": {"public_ip_zone:near": ["96bbd712-0f64-4146-bfb2-b2bd91f20319"]},"flavorRef": "2","max_count": 1,"min_count": 1,"networks": [{"uuid": "00000000-0000-0000-0000-000000000000"}, {"uuid": "11111111-1111-1111-1111-111111111111"}, {"uuid": "7af32f1c-85de-44c5-be68-4b1465566683"}]}}&rdquo;
 ```
+
 *Response:*
 
 ```
@@ -150,6 +155,7 @@ curl -vv -s -k https://dfw.servers.api.rackspacecloud.com/v2/5831008/servers
    }
 }
 ```
+
 4: Get the details for the slave server and confirm that slave server is in the same publicIPZoneId as master server.
 
 *Request:*
@@ -159,6 +165,7 @@ curl -s https://dfw.servers.api.rackspacecloud.com/v2/5831008/servers/ffec9d55-2
      -X GET -H "Content-Type: application/json" 
      -H "X-Auth-Token: $token"
 ```
+
 *Response:*
 
 ```
@@ -210,6 +217,7 @@ curl -s https://dfw.servers.api.rackspacecloud.com/v2/5831008/servers/ffec9d55-2
    }
 }
 ```
+
 ### Create a shared IP address and associate it with both servers
 
 Perform the following steps from your local computer.
@@ -225,6 +233,7 @@ curl -s https://dfw.networks.api.rackspacecloud.com/v2.0/ports?network_id=000000
      -X GET 
      -H "X-Auth-Token: $token" | python -m json.tool
 ```
+
 *Response:*
 
 ```
@@ -282,6 +291,7 @@ curl -s https://dfw.networks.api.rackspacecloud.com/v2.0/ports?network_id=000000
    ]
 }
 ```
+
 2. Provision the IP address on the PublicNet ports for the master and slave servers. For future reference, note 
         the IP address and the IP address ID in the response.
 
@@ -293,6 +303,7 @@ curl -s https://dfw.networks.api.rackspacecloud.com/v2.0/ip_addresses
      -H "X-Auth-Token: $token" 
      -d " {"ip_address":{"network_id": "00000000-0000-0000-0000-000000000000","port_ids": ["a1bb7074-9ccc-4bc0-991e-7847de374af3", "0b5a23ec-be78-4ea3-9251-b64444236c1d"],"tenant_id": "5831008","version": 4}}"
 ```
+
 *Response:*
 
 ```
@@ -311,6 +322,7 @@ curl -s https://dfw.networks.api.rackspacecloud.com/v2.0/ip_addresses
    }
 }
 ```
+
 3. Confirm that both server ports share the IP address.
 
 *Request:*
@@ -320,6 +332,7 @@ curl -s https://dfw.networks.api.rackspacecloud.com/v2.0/ip_addresses
      -X GET -H "Content-Type: application/json" 
      -H "X-Auth-Token: $token"
 ```
+
 *Response:*
 
 ```
@@ -375,6 +388,7 @@ curl -s https://dfw.networks.api.rackspacecloud.com/v2.0/ip_addresses
    ]
 }
 ```
+
 4. Associate the shared IP address with the master server.
 
 *Request:*
@@ -384,6 +398,7 @@ curl -vv -s -k https://dfw.servers.api.rackspacecloud.com/v2/5831008/servers/96b
       -X PUT -H "Content-Type: application/json" 
       -H "X-Auth-Token: $token"
 ```
+
 *Response:*
 
 ```
@@ -393,6 +408,7 @@ curl -vv -s -k https://dfw.servers.api.rackspacecloud.com/v2/5831008/servers/96b
    }
 }
 ```
+
 5. Associate the shared IP address with the slave server.
 
 *Request:*
@@ -402,6 +418,7 @@ curl -vv -s -k https://dfw.servers.api.rackspacecloud.com/v2/5831008/servers/ffe
       -X PUT -H "Content-Type: application/json" <br>
       -H "X-Auth-Token: $token"
 ```
+
 *Response:*
 
 ```
@@ -411,6 +428,7 @@ curl -vv -s -k https://dfw.servers.api.rackspacecloud.com/v2/5831008/servers/ffe
    }
 }
 ```
+
 ### Configure Apache2 and set up the heartbeat on the servers
 
 Perform the following steps on the master and slave servers. Each step
@@ -423,6 +441,7 @@ sudo apt-get update
 sudo apt-get install heartbeat
 sudo apt-get install apache2
 ```
+
 2. (Master) Create the ***/etc/heartbeat/authkeys*** file on the master server and enter the following text. The 
         contents are the same for the master server and the slave server.  Substitute your own passphrase.
 
@@ -432,11 +451,13 @@ sudo apt-get install apache2
 auth 1
 1 sha1 YourSecretPassPhrase
 ```
+
 3. (Master) Set the correct permissions on the ***/etc/heartbeat/authkeys*** file
 
 ```
 chmod 600 /etc/heartbeat/authkeys
 ```
+
 4. (Master) Create the ***/etc/heartbeat/haresources*** file on the master server and enter the following contents 
         (with your master server public IP address). The contents are the same for the master server and the slave server.
 
@@ -445,6 +466,7 @@ chmod 600 /etc/heartbeat/authkeys
 ```
 master-instance-name 10.23.233.113/24
 ```
+
 5. (Master) Create the ***/etc/heartbeat/ha.cf*** file on master server and enter the following text. The lines with 
         comments are the ones that have to be modified.
 
@@ -464,6 +486,7 @@ node slave-instance-name # slave-instance-name is the name displayed by uname -n
 respawn hacluster /usr/lib/heartbeat/ipfail
 use_logd yes
 ```
+
 6. (Slave) Install Apache on the slave server by running the following commands:
 
 ```
@@ -471,6 +494,7 @@ sudo apt-get update
 sudo apt-get install heartbeat
 sudo apt-get install apache2
 ```
+
 7. (Slave) Create the ***/etc/heartbeat/authkeys*** file on the slaver server and enter the following text. 
         The contents are the same for the master server and the slave server. Substitute your own passphrase.
 
@@ -485,6 +509,7 @@ auth 1
 ```
 chmod 600 /etc/heartbeat/authkeys
 ```
+
 9. (Slave) Create the ***/etc/heartbeat/haresources*** file on the slave server and populate it with the 
         shared IP address (with you master server public IP address). The contents are the same for the master 
         server and the slave server.
@@ -494,6 +519,7 @@ chmod 600 /etc/heartbeat/authkeys
 ```
 master-instance-name 10.23.233.113/24
 ```
+
 10. (Slave) Create the ***/etc/heartbeat/ha.cf*** file on the slave server and enter the following text. 
          The lines with comments are the ones that have to be modified.
 
@@ -512,30 +538,37 @@ node master-instance-name# master-instance-name is the name displayed by uname -
 node slave-instance-name # slave-instance-name is the name displayed by uname -n in the slave instance
 respawn hacluster /usr/lib/heartbeat/ipfail use_logd yes
 ```
+
 11. (Slave) Restart the heartbeat on the slave server by running the following command:
 
 ```
 sudo service heartbeat restart
 ```
+
 12. (Master) Set up Apache to respond with the hostname on the master server by running the following command:
 
 ```
 echo `hostname` > /var/www/html/index.html
 ```
+
 13. (Slave) Set up Apache to respond with the hostname on the slave server by running the following command:
 
-```echo `hostname` > /var/www/html/index.html
 ```
+echo `hostname` > /var/www/html/index.html
+```
+
 14. (Master) Restart Apache on the master server by running the following command:
 
 ```
 sudo service apache2 restart
 ```
+
 15. (Slave) Restart Apache on the slave server by running the following command:
 
 ```
 sudo service apache2 restart
 ```
+
 ### Test the configuration
 
 Perform the following steps on the master and slave servers and your
@@ -547,6 +580,7 @@ local computer. Each step indicates where to perform the step.
 ```
 ifconfig
 ```
+
 *Response:*
 
 ```
@@ -582,6 +616,7 @@ TX packets:46268 errors:0 dropped:0 overruns:0 carrier:0
 collisions:0 txqueuelen:0
 RX bytes:15678190 (15.6 MB) TX bytes:15678190 (15.6 MB)
 ```
+
 2. (Local computer) Browse to the shared IP address, which connects you to the master server, by using a web 
         browser with the shared IP address in the address bar. The browser displays the master server's instance name.
 
@@ -591,22 +626,26 @@ RX bytes:15678190 (15.6 MB) TX bytes:15678190 (15.6 MB)
 ```
 ssh username@master_server_ip_address
 ```
+
 4. (Master) Find the gateway address by running the following command. Save the gateway address for future reference.
 
 ```
 route | grep default
 ```
+
 5. (Master) Turn off the eth0 interface by running the following command:
 
 ```
 sudo ifconfig eth0 down
 ```
+
 6. (Local computer) Use SSH to connect to the slave server by running the following command (substituting your 
         username and your master server IP address):
 
 ```
 ssh username@slave_server_ip_address
 ```
+
 7. (Local computer) After a few moments, browse to the shared IP address, which connects you to the slave server, 
         by using a web browser with the shared IP address in the address bar. The browser displays the slave server's instance name.
 
@@ -615,6 +654,7 @@ ssh username@slave_server_ip_address
 ```
 sudo ifconfig
 ```
+
 *Response:*
 
 ```
@@ -650,11 +690,13 @@ TX packets:778 errors:0 dropped:0 overruns:0 carrier:0
 collisions:0 txqueuelen:0
 RX bytes:256853 (256.8 KB) TX bytes:256853 (256.8 KB)
 ```
+
 9. (Master) Turn on the eth0 interface by running the following command:
 
 ```
 sudo ifconfig eth0 up
 ```
+
 10. (Master) Restore the shared IP address to the master instance by running the following command (using 
          the gateway address from step 4):
 
