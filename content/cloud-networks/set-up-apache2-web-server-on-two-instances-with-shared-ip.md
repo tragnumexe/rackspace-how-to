@@ -424,7 +424,7 @@ same for the master server and the slave server.
 
   *File contents:*
 
-    master-instance-name 10.23.233.113/24
+    master-instance-hostname 10.23.233.113/24
 
 5. (Master) Create the ***/etc/heartbeat/ha.cf*** file on master server and enter the 
 following text. The lines with comments are the ones that have to be modified.
@@ -439,8 +439,8 @@ following text. The lines with comments are the ones that have to be modified.
       udpport 694
       ucast eth0 10.23.233.89 # The IP address of the slave instance on public net
       auto_failback on
-      node master-instance-name # master-instance-name is the name displayed by uname -n in the master instance
-      node slave-instance-name # slave-instance-name is the name displayed by uname -n in the slave instance
+      node master-instance-hostname # master-instance-hostname is the name displayed by uname -n in the master instance
+      node slave-instance-hostname # slave-instance-hostname is the name displayed by uname -n in the slave instance
       respawn hacluster /usr/lib/heartbeat/ipfail
       use_logd yes
 
@@ -469,7 +469,7 @@ the same for the master server and the slave server.
 
   *File contents:*
 
-      master-instance-name 10.23.233.113/24
+      master-instance-hostname 10.23.233.113/24
 
 10. (Slave) Create the ***/etc/heartbeat/ha.cf*** file on the slave server and enter the 
 following text. The lines with comments are the ones that have to be modified.
@@ -484,8 +484,8 @@ following text. The lines with comments are the ones that have to be modified.
       udpport 694
       ucast eth0 10.23.233.89 # The ip address of the master instance on public net
       auto_failback on
-      node master-instance-name# master-instance-name is the name displayed by uname -n in the master instance
-      node slave-instance-name # slave-instance-name is the name displayed by uname -n in the slave instance
+      node master-instance-hostname# master-instance-hostname is the name displayed by uname -n in the master instance
+      node slave-instance-hostname # slave-instance-hostname is the name displayed by uname -n in the slave instance
       respawn hacluster /usr/lib/heartbeat/ipfail use_logd yes
 
 11. (Slave) Restart the heartbeat on the slave server by running the following command:
