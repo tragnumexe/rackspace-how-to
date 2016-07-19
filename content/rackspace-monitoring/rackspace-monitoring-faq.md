@@ -5,8 +5,8 @@ title: Rackspace Monitoring FAQ
 type: article
 created_date: '2015-12-10'
 created_by: Stephanie Fillmon
-last_modified_date: '2016-01-22'
-last_modified_by: Constanze Kratel
+last_modified_date: '2016-07-19'
+last_modified_by: Kyle Laffoon
 product: Rackspace Monitoring
 product_url: rackspace-monitoring
 ---
@@ -121,10 +121,6 @@ you find via the [Rackspace Product
 Feedback](https://feedback.rackspace.com/) forums. For more immediate
 assistance with a time-sensitive issue, please file a ticket or contact
 your account team.
-
-#### Will you support SNMP traps?
-
-Not yet, but we are planning on starting in the near future.
 
 #### How is Rackspace Monitoring billed?
 
@@ -361,15 +357,7 @@ monitoring all of them.
 
 #### How does this compare to open source solutions like Nagios?
 
-It is targeted at replacing these type of tools. Right now we don't
-offer all the features of Nagios; however, Rackspace Monitoring is
-hosted as a service, API driven and built for the cloud. Rackspace
-Monitoring also provides geographically redundant checks which is
-something that is generally very difficult to get with any solution.
-Customers will get to leverage our big datacenter footprint, incredible
-scalability, and our continuous release feature. Future improvements to
-the service will be released as they become functional (no need to wait
-for an upgrade package, and no need for downtime).
+Rackspace Monitoring is targeted at replacing these type of tools.  Rackspace Monitoring is hosted as a service, API driven and built for the cloud. Rackspace Monitoring also provides geographically redundant checks which is something that is generally very difficult to get with any solution. Customers will get to leverage our big datacenter footprint, incredible scalability, and our continuous release feature.  Since agent 2.0 release with auto upgrade and self monitoring capability, combined with agent plugin community, we have seen many customers replacing 100% of their Nagios usage with Rackspace Monitoring.
 
 #### Will there be an API call or published URI to get all the collector IPs as with Cloudkick?
 
