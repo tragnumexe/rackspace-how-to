@@ -5,8 +5,8 @@ title: Rackspace billing FAQ
 type: article
 created_date: '2014-01-17'
 created_by: Rackspace Support
-last_modified_date: '2016-06-22'
-last_modified_by: Kelly Holcomb
+last_modified_date: '2016-07-21'
+last_modified_by: Kyle Laffoon
 product: undefined
 product_url: undefined
 ---
@@ -18,27 +18,28 @@ Get quick answers to common questions about Rackspace billing.
 #### How am I billed for Rackspace services?
 
 Many of our services follow a utility pricing model and are billed for
-hourly usage each month on the anniversary date of the account creation.
+hourly usage each month on the anniversary date when your account was created.
 Charges on invoices are based on service usage since the last invoice
 date. The only exception is Cloud Sites, which is invoiced in advance
-of usage per a monthly subscription price. Details about our
-product pricing are located on our [Cloud Pricing Page](http://www.rackspace.com/cloud/public-pricing/).
+per a monthly subscription price. Details about our
+product pricing are located on the [Cloud Pricing Page](http://www.rackspace.com/cloud/public-pricing/).
 
 Payments are charged automatically to a credit card.
 
 #### How can I estimate my monthly bill?
 
-You can use our [Cloud Pricing Page](http://www.rackspace.com/cloud/public-pricing/) and [Cloud Pricing Calculator](http://www.rackspace.com/calculator/) to estimate pricing.
+You can use the [Cloud Pricing Page](http://www.rackspace.com/cloud/public-pricing/) and [Cloud Pricing Calculator](http://www.rackspace.com/calculator/) to estimate pricing.
 
 #### Can I pay in advance?
 
 You can prepay a commitment pricing contract for your account if you
 meet the minimum requirements for our Commitment Pricing Program. Any
-usage beyond the minimum commitment amount will be invoiced at the
-utility rate on your monthly date of you account's anniversary. For example, if your
-account was created on the 25th of the month, you will be billed monthly
-on the 25th. You can find more information about the Commitment Pricing
-Program on the [Cloud Servers Discount page](http://www.rackspace.com/cloud/servers/discounts/).
+usage beyond the minimum commitment amount is invoiced at the utility rate on
+the monthly date of your account's anniversary. For example, if your account
+was created on the 25th of the month, you are billed monthly on the 25th.
+
+To find more information about the Commitment Pricing Program, see the
+[Cloud Servers Discount page](http://www.rackspace.com/cloud/servers/discounts/).
 
 ### Account information
 
@@ -96,7 +97,7 @@ show what you are paying for when you partner with us.
     infrastructure of the hosted server.
 -   The managed service price applies to the ***Fanatical Support***&reg;
     that we offer on top of our infrastructure. This *Service Level
-    Rate* varies based on the service level that you choose for your
+    Rate* varies based on the service level that you chose for your
     cloud account.
 
 The Service Level Rate *minimums* are based on the service level that
@@ -105,7 +106,7 @@ monthly charge for the service. If the cost of the resources that you use in
 a month total more than the minimum, the Service Level Rate minimum does
 not apply. If your costs for a month are less than the minimum, the
 difference between your usage costs and the Service Level Rate minimum
-are added to your bill.
+is added to your bill.
 
 #### Why am I being billed for a service when I'm not using it?
 
@@ -114,7 +115,7 @@ account. You are charged for servers and services as long as their
 resources remain allocated to your account, even if they are not in use
 or are disabled. When you delete the server or service from your
 account, its resources are available for someone else to use and you are no
-longer billed for them.
+longer billed for it.
 
 You can delete cloud servers and services by using the [Cloud Control Panel](http://mycloud.rackspace.com). To cancel a Cloud Sites service
 or Rackspace support for Azure, create a ticket for our billing team.
