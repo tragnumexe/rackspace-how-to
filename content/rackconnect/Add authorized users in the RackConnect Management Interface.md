@@ -17,7 +17,7 @@ RackConnect users, click **Account > User List**.
 
 On the RackConnect **User List** page, you can view active or invited users
 and create or deactivate users.
-**Note:** You wil also see Inactive users and Invited Users listed. 
+**Note:** You will also see inactive users and invited users listed. 
  - Inactive user has not been invited.
  - Invited user has been sent activation information and is in a pending type of status.
 
