@@ -6,7 +6,7 @@ type: article
 created_date: '2016-08-15'
 created_by: Rackspace Support
 last_modified_date: '2016-08-15'
-last_modified_by: Cat Lookabaugh
+last_modified_by: Kyle Laffoon
 product: Cloud Networks
 product_url: cloud-networks
 ---
@@ -24,14 +24,14 @@ will respond to a web request.
 
 The following sections show you how to:
 
-  1. Create two servers in the same publicIPZoneId
+  -  Create two servers in the same publicIPZoneId
 
-  2. Create a shared IP address and associate the shared IP address
+  -  Create a shared IP address and associate the shared IP address
      with both servers
 
-  3. Configure apache2 and set up the heartbeat on the servers
+  -  Configure apache2 and set up the heartbeat on the servers
 
-  4. Test the configuration
+  -  Test the configuration
 
 ### Before you begin
 
@@ -63,7 +63,8 @@ Perform the following steps from your local computer.
          }
       }
 
-2. Get the details for the master server. Save the publicIPZoneId for future reference.
+2. Get the details for the master server. Save the publicIPZoneId for future  
+   reference.
 
    *Request:*
 
@@ -488,7 +489,7 @@ indicates where to perform the step.
       respawn hacluster /usr/lib/heartbeat/ipfail use_logd yes
 
 11. (Slave) Restart the heartbeat on the slave server by running the following
-    command:
+   command:
 
     sudo service heartbeat restart
 
